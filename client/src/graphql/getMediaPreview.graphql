@@ -1,0 +1,15 @@
+query GetMediaPreview($url: String!, $service: String!) {
+  getMediaPreview(url: $url, service: $service) {
+    title
+    thumbnailUrl
+    duration
+    source
+    downloadOptions {
+      quality
+      format
+      downloadUrl
+      hasAudio
+    }
+    audioUrl
+  }
+}
