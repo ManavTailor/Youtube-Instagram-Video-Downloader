@@ -5,78 +5,40 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f2f5;
+  transition: background 0.3s, color 0.3s;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+/* Remove old container/header/form styles, use Tailwind for layout */
+
+/* Card shadow and border for both themes */
+.card-modern {
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08), 0 1.5px 4px 0 rgba(0,0,0,0.04);
+  border-radius: 1rem;
+  border: 1px solid var(--tw-border-opacity, 0.1);
 }
 
-.header {
-  background-color: #001529;
-  padding: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  color: white;
-  margin: 0;
-}
-
-.form-container {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.preview-card {
-  margin-top: 20px;
-  text-align: left;
-}
-
-.preview-card .ant-card-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.preview-card img {
-  max-width: 100%;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-.download-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-top: 16px;
-}
-
-.download-section .ant-select {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.download-section .ant-btn {
-  width: 100%;
-}
-
+/* Responsive tweaks for mobile */
 @media (max-width: 600px) {
-  .container {
-    padding: 10px;
+  .card-modern {
+    border-radius: 0.75rem;
   }
+}
 
-  .header {
-    padding: 15px;
-  }
+/* Custom scrollbar for dark mode */
+html.dark ::-webkit-scrollbar {
+  width: 8px;
+  background: #23272f;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #444857;
+  border-radius: 4px;
+}
 
-  .form-container {
-    padding: 15px;
-  }
+html:not(.dark) ::-webkit-scrollbar {
+  width: 8px;
+  background: #f3f4f6;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
 }

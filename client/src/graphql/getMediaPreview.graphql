@@ -11,5 +11,11 @@ query GetMediaPreview($url: String!, $service: String!) {
       hasAudio
     }
     audioUrl
+    mediaItems {
+      quality
+      format
+      downloadUrl
+      hasAudio
+    }
   }
 }

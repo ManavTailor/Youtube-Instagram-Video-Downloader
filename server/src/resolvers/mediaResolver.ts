@@ -3,6 +3,7 @@ import { MediaPreview } from '../entities/MediaPreview';
 import { YoutubeService } from '../services/YoutubeService';
 import { InstagramService } from '../services/InstagramService';
 
+
 @Resolver()
 export class MediaResolver {
   @Query(() => MediaPreview, { nullable: true })
@@ -10,14 +11,17 @@ export class MediaResolver {
     @Arg('url') url: string,
     @Arg('service') service: string
   ): Promise<MediaPreview | null> {
-    switch (service) {
-      case 'YouTube':
+    const normalizedService = service.trim().toLowerCase();
+    console.log('Requested service:', service, 'Normalized:', normalizedService);
+    switch (normalizedService) {
+      case 'youtube':
         return new YoutubeService().getMediaPreview(url);
-      case 'Instagram':
-      case 'Instagram Story':
+      case 'instagram':
+      case 'instagram story':
         return new InstagramService().getMediaPreview(url);
       default:
         return null;
     }
   }
 }
+

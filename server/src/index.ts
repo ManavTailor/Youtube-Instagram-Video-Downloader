@@ -7,6 +7,9 @@ import { MediaResolver } from './resolvers/mediaResolver';
 async function main() {
   const app: Application = express();
 
+  // Serve merged downloads
+  app.use('/downloads', express.static('downloads'));
+
   const schema = await buildSchema({
     resolvers: [MediaResolver],
     emitSchemaFile: true,

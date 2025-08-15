@@ -4,7 +4,7 @@ import { DownloadOption } from './DownloadOption';
 @ObjectType()
 export class MediaPreview {
   @Field()
-  declare title: string;
+   declare title: string;
 
   @Field()
   declare thumbnailUrl: string;
@@ -14,6 +14,9 @@ export class MediaPreview {
 
   @Field()
   declare source: string;
+
+  @Field(() => [DownloadOption], { nullable: true })
+  mediaItems?: DownloadOption[];
 
   @Field(() => [DownloadOption])
   declare downloadOptions: DownloadOption[];
